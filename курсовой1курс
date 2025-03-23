@@ -31,7 +31,7 @@ public:
     }
 
     void board() {
-        cout << "\nТекущее состояние башен:\n\n";
+        cout << "\nГ’ГҐГЄГіГ№ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ ГЎГ ГёГҐГ­:\n\n";
         cout << "   I         II         III\n";
         cout << "----------------------------\n";
         for (int a = disks - 1; a >= 0; --a) {
@@ -53,7 +53,7 @@ public:
     void algorithm(int disk, int source, int dest, int helper) {
         if (disk > 0) {
             algorithm(disk - 1, source, helper, dest);
-            cout << "Переместить диск " << disk << " с башни " << source << " на башню " << dest << endl;
+            cout << "ГЏГҐГ°ГҐГ¬ГҐГ±ГІГЁГІГј Г¤ГЁГ±ГЄ " << disk << " Г± ГЎГ ГёГ­ГЁ " << source << " Г­Г  ГЎГ ГёГ­Гѕ " << dest << endl;
             moving(disk, source - 1, dest - 1);
             algorithm(disk - 1, helper, dest, source);
         }
@@ -74,15 +74,15 @@ int pr_disks(const string& prompt, bool checkMinValue = false) {
         cout << prompt;
         cin >> input;
         if (cin.fail() || input <= 0 || (checkMinValue && input < 3)) {
-            cin.clear(); // очищаем флаг ошибки
-            while (cin.get() != '\n'); // очищаем буфер
+            cin.clear(); // Г®Г·ГЁГ№Г ГҐГ¬ ГґГ«Г ГЈ Г®ГёГЁГЎГЄГЁ
+            while (cin.get() != '\n'); // Г®Г·ГЁГ№Г ГҐГ¬ ГЎГіГґГҐГ°
             if (checkMinValue && input < 3 && input > 0) {
-                cout << "Ошибка! Введите число не менее 3.\n";
+                cout << "ГЋГёГЁГЎГЄГ ! Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® Г­ГҐ Г¬ГҐГ­ГҐГҐ 3.\n";
             } else {
-                cout << "Ошибка! Введите положительное число.\n";
+                cout << "ГЋГёГЁГЎГЄГ ! Г‚ГўГҐГ¤ГЁГІГҐ ГЇГ®Г«Г®Г¦ГЁГІГҐГ«ГјГ­Г®ГҐ Г·ГЁГ±Г«Г®.\n";
             }
         } else {
-            while (cin.get() != '\n'); // очищаем буфер
+            while (cin.get() != '\n'); // Г®Г·ГЁГ№Г ГҐГ¬ ГЎГіГґГҐГ°
             return input;
         }
     }
@@ -93,26 +93,26 @@ int pr_towers(const string& prompt, int source = -1) {
         cout << prompt;
         cin >> input;
         if (cin.fail() || input < 1 || input > 3 || (source != -1 && input == source)) {
-            cin.clear(); // очищаем флаг ошибки
-            while (cin.get() != '\n'); // очищаем буфер
+            cin.clear(); // Г®Г·ГЁГ№Г ГҐГ¬ ГґГ«Г ГЈ Г®ГёГЁГЎГЄГЁ
+            while (cin.get() != '\n'); // Г®Г·ГЁГ№Г ГҐГ¬ ГЎГіГґГҐГ°
             if (source != -1 && input == source) {
-                cout << "Ошибка! Начальное место и место назначения совпадают. Попробуйте снова!\n";
+                cout << "ГЋГёГЁГЎГЄГ ! ГЌГ Г·Г Г«ГјГ­Г®ГҐ Г¬ГҐГ±ГІГ® ГЁ Г¬ГҐГ±ГІГ® Г­Г Г§Г­Г Г·ГҐГ­ГЁГї Г±Г®ГўГЇГ Г¤Г ГѕГІ. ГЏГ®ГЇГ°Г®ГЎГіГ©ГІГҐ Г±Г­Г®ГўГ !\n";
             } else {
-                cout << "Ошибка! Введите число от 1 до 3.\n";
+                cout << "ГЋГёГЁГЎГЄГ ! Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г® Г®ГІ 1 Г¤Г® 3.\n";
             }
         } else {
-            while (cin.get() != '\n'); // очищаем буфер
+            while (cin.get() != '\n'); // Г®Г·ГЁГ№Г ГҐГ¬ ГЎГіГґГҐГ°
             return input;
         }
     }
 }
 int main() {
     setlocale(LC_ALL, "RUS");
-    int disk = pr_disks("Количество дисков: ", true);
-    int source = pr_towers("Начальное место (1, 2, 3): ");
-    int dest = pr_towers("Место назначения (1, 2, 3): ", source);
+    int disk = pr_disks("ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¤ГЁГ±ГЄГ®Гў: ", true);
+    int source = pr_towers("ГЌГ Г·Г Г«ГјГ­Г®ГҐ Г¬ГҐГ±ГІГ® (1, 2, 3): ");
+    int dest = pr_towers("ГЊГҐГ±ГІГ® Г­Г Г§Г­Г Г·ГҐГ­ГЁГї (1, 2, 3): ", source);
     han_tower game(disk, source);
-    cout << "Последовательность ходов:\n";
+    cout << "ГЏГ®Г±Г«ГҐГ¤Г®ГўГ ГІГҐГ«ГјГ­Г®Г±ГІГј ГµГ®Г¤Г®Гў:\n";
     game.algorithm(disk, source, dest, 6 - source - dest);
     system("pause>nul");
     return 0;
